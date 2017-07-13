@@ -10,11 +10,8 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath 'org.springframework:springloaded:1.2.7.RELEASE'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
     }
-}
-
-bootRun {
-    addResources = true
 }
 
 apply plugin: 'java'
@@ -42,5 +39,5 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
     compile 'org.springframework.boot:spring-boot-starter-web'
-    testCompile('org.springframework.boot:spring-boot-starter-web-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
