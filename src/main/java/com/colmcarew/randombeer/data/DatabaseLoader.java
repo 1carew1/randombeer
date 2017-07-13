@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by colmcarew on 13/07/2017.
  */
-//@Component
+@Component
 public class DatabaseLoader implements CommandLineRunner {
 
     private final BeerRepository repository;
