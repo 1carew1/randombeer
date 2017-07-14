@@ -13,21 +13,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script type="text/babel">
+// This is a very dirty way of getting some form of react going
+
 var Beer = React.createClass({
   render: function() {
     var result = null;
     if(this.props.beer) {
-      result = (      <tr>
-        <td>{this.props.beer.name}</td>
-        <td>{this.props.beer.age}</td>
-        <td>{this.props.beer.years}</td>
-      </tr>);
+      result = <p>{this.props.beer.name}</p>;
     }
     return result;
   }
 });
-var BeerTable = React.createClass({
 
+var Jumbotron = React.createClass({
+  render: function() {
+    return (
+      <div class="container">
+        <div class="jumbotron">
+          <h1>The Random Beer App</h1>
+          <button type="button" class="btn btn-warning" onClick={this.props.obtainRandomBeer}>Show Another Beer</button>
+        </div>
+      </div>
+      );
+  }
+});
+
+var App = React.createClass({
   obtainRandomBeer: function() {
     var self = this;
     $.ajax({
@@ -44,30 +55,19 @@ var BeerTable = React.createClass({
 
   componentDidMount: function() {
     this.obtainRandomBeer();
-    console.log('Welcome to the house of fun');
   },
 
   render: function() {
-    var row = (<Beer beer={this.state.beer} />);
     return (
-        <div className="container">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Years</th>
-              </tr>
-            </thead>
-            <tbody>{row}</tbody>
-          </table>
-        </div>
-      );
+      <div>
+      <Jumbotron  obtainRandomBeer={this.obtainRandomBeer.bind(this)}/>
+      <Beer beer={this.state.beer} />
+      </div>);
   }
 });
 
 ReactDOM.render(
-  <BeerTable />, document.getElementById('root')
+  <App />, document.getElementById('root')
 );
 </script>
 </body>
