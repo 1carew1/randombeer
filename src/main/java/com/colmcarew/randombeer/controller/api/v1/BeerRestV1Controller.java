@@ -1,4 +1,4 @@
-package com.colmcarew.randombeer.controller;
+package com.colmcarew.randombeer.controller.api.v1;
 
 /**
  * Created by colmcarew on 13/07/2017.
@@ -14,18 +14,20 @@ import com.colmcarew.randombeer.rest.v1.converter.BeerRestConverterV1;
 import com.colmcarew.randombeer.rest.v1.model.RestBeerV1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BeerRestController {
+@RequestMapping("/api/v1")
+public class BeerRestV1Controller {
 
     @Autowired
     private BreweryRepository repository;
 
 
-    @GetMapping("/greeting")
-    public RestBeerV1 greeting(@RequestParam(value="name", defaultValue="World") String name) {
+    @GetMapping("/beer")
+    public RestBeerV1 obtainRandomBeer(@RequestParam(value="name", defaultValue="World") String name) {
         List<Brewery> breweryList = repository.findAll();
         int randBreweryIndex = obtainRandomIndex(breweryList.size());
         Brewery brewery = breweryList.get(randBreweryIndex);
