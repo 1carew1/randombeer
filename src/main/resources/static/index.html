@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>React + Spring</title>
+    <title>The Random Beer App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
@@ -12,63 +12,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<script type="text/babel">
-// This is a very dirty way of getting some form of react going
-
-var Beer = React.createClass({
-  render: function() {
-    var result = null;
-    if(this.props.beer) {
-      result = <p>{this.props.beer.name}</p>;
-    }
-    return result;
-  }
-});
-
-var Jumbotron = React.createClass({
-  render: function() {
-    return (
-      <div class="container">
-        <div class="jumbotron">
-          <h1>The Random Beer App</h1>
-          <button type="button" class="btn btn-warning" onClick={this.props.obtainRandomBeer}>Show Another Beer</button>
-        </div>
-      </div>
-      );
-  }
-});
-
-var App = React.createClass({
-  obtainRandomBeer: function() {
-    var self = this;
-    $.ajax({
-      url: "/api/v1/beer"
-    }).then(function (data) {
-        console.log(data);
-        self.setState({beer: data});
-    });
-  },
-
-  getInitialState: function () {
-    return {beer: null};
-  },
-
-  componentDidMount: function() {
-    this.obtainRandomBeer();
-  },
-
-  render: function() {
-    return (
-      <div>
-      <Jumbotron  obtainRandomBeer={this.obtainRandomBeer.bind(this)}/>
-      <Beer beer={this.state.beer} />
-      </div>);
-  }
-});
-
-ReactDOM.render(
-  <App />, document.getElementById('root')
-);
-</script>
+<script type="text/babel" src="./reactcomponents.js"></script>
 </body>
 </html>
