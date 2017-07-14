@@ -22,8 +22,12 @@ Once the project is cloned you can run the app by cd into the root of the projec
 
 Once running through the terminal the App should be accessible in a Browser through : http://localhost:8080
 
-If you wish to create a Beer please post to http://localhost:8080/api/v1/beer while the app is running
+If you wish to create a Beer please post to http://localhost:8080/api/v1/beer while the app is running.
+
+
 Example JSON : 
+
+
 {
   "name" : "Colms Beer",
   "description" : "Tastes Great",
