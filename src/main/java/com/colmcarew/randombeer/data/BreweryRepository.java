@@ -11,4 +11,5 @@ import java.util.List;
  * Created by colmcarew on 13/07/2017.
  */
 public interface BreweryRepository extends JpaRepository<Brewery, Long> {
+    public Brewery findByLocation(String location);
 }
