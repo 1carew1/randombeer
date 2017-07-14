@@ -31,7 +31,7 @@ Basic Unit tests through Spring were used as well as Rest Assured version 2.3.0 
 Jacoco was used to get the code coverage of the Application. To run code coverage cd into the root of the project and run :
 ./gradlew test jacocTestReport
 
-The resulting HTML file will be in build/reports/jacoco/index.html
+The resulting HTML file will be in build/reports/jacoco/html/index.html
 
 ![Jacoco Code Coverage][jacoco_test_report]
 
