@@ -9,12 +9,14 @@ public class RestBeerV1 {
     private String description;
     private Double alcoholPercentage;
     private String breweryLocation;
+    private String imageUrl;
 
-    public RestBeerV1(String name, String description, Double alcoholPercentage, String breweryLocation) {
+    public RestBeerV1(String name, String description, Double alcoholPercentage, String breweryLocation, String imageUrl) {
         this.name = name;
         this.description = description;
         this.alcoholPercentage = alcoholPercentage;
         this.breweryLocation = breweryLocation;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -31,5 +33,9 @@ public class RestBeerV1 {
 
     public String getBreweryLocation() {
         return breweryLocation;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

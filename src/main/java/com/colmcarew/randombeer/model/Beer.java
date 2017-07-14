@@ -13,6 +13,7 @@ public class Beer {
     Long id;
     private String name;
     private String description;
+    private String imageUrl;
     private Double alcoholPercentage;
     @ManyToOne
     @JoinColumn(name = "brewery_id")
@@ -26,6 +27,14 @@ public class Beer {
         this.description = description;
         this.alcoholPercentage = alcoholPercentage;
         this.brewery = brewery;
+    }
+
+    public Beer(String name, String description, Double alcoholPercentage, Brewery brewery, String imageUrl) {
+        this.name = name;
+        this.description = description;
+        this.alcoholPercentage = alcoholPercentage;
+        this.brewery = brewery;
+        this.imageUrl = imageUrl;
     }
 
 
@@ -47,5 +56,9 @@ public class Beer {
 
     public Brewery getBrewery() {
         return brewery;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

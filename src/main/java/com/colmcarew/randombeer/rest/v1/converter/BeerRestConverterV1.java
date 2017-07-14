@@ -19,7 +19,8 @@ public class BeerRestConverterV1 {
         RestBeerV1 restBeer = new RestBeerV1(beer.getName(),
                 beer.getDescription(),
                 beer.getAlcoholPercentage(),
-                beer.getBrewery().getLocation());
+                beer.getBrewery().getLocation(),
+                beer.getImageUrl());
         return restBeer;
     }
 }
