@@ -1,5 +1,7 @@
 package com.colmcarew.randombeer.model;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
 
 /**
@@ -13,6 +15,7 @@ public class Beer {
     Long id;
     private String name;
     private String description;
+    @URL
     private String imageUrl;
     private Double alcoholPercentage;
     @ManyToOne
