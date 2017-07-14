@@ -23,8 +23,8 @@ var Beer = React.createClass({
              <div className="col-md-7">
                 <div className="jumbotron">
                   <h3>{beer.name}</h3>
-                  <p>{beer.description}</p>
-                  <p className="pull-right">{beer.breweryLocation}</p>
+                  <p>{beer.description} - {beer.alcoholPercentage}%</p>
+                  <p className="text-right">{beer.breweryLocation}</p>
                 </div>
              </div>
            </div>
