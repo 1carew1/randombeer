@@ -20,6 +20,21 @@ Ensure you have Java 8 installed locally
 Once the project is cloned you can run the app by cd into the root of the project and running :
 ./gradlew bootRun
 
+Once running through the terminal the App should be accessible in a Browser through : http://localhost:8080
+
+If you wish to create a Beer please post to http://localhost:8080/api/v1/beer while the app is running
+Example JSON : 
+{
+  "name" : "Colms Beer",
+  "description" : "Tastes Great",
+  "alcoholPercentage" : 2,
+  "breweryLocation" : "Waterford",
+  "imageUrl" : "https://dc8gwjuur0w0x.cloudfront.net/lists/avatars/000/000/047/original_o-PINT-GLASS-BEER-facebook.jpg?1473216955"
+}
+
+Note, the REST API only accepts JSON data and does not accept x-www-form-urlencoded data
+
+
 ### List of Software + Technologies Used
 + Spring Boot 2.0.0.M2
 + React 15
