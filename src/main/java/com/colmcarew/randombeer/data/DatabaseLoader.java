@@ -11,6 +11,7 @@ import java.util.Set;
 
 /**
  * Created by colmcarew on 13/07/2017.
+ * This is the class used for Bootstraping the Beer and Brewery Data
  */
 @Component
 public class DatabaseLoader implements CommandLineRunner {

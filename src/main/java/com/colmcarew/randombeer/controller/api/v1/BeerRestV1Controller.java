@@ -2,6 +2,7 @@ package com.colmcarew.randombeer.controller.api.v1;
 
 /**
  * Created by colmcarew on 13/07/2017.
+ * The purpose of this Controller is to Act as the Rest Endpoint for the Application
  */
 
 import java.util.ArrayList;
@@ -28,9 +29,14 @@ public class BeerRestV1Controller {
     @Autowired
     private BreweryRepository repository;
 
+    // Use for converting the DB Beer to a Rest Friendly Beer and Vice Versa
     private final BeerRestConverterV1 beerRestConverter = new BeerRestConverterV1();
 
 
+    /**
+     * Method used for obtaining a Random Beer
+     * @return
+     */
     @RequestMapping(value = "/beer", method = RequestMethod.GET)
     public RestBeerV1 obtainRandomBeer() {
         List<Brewery> breweryList = repository.findAll();
@@ -44,6 +50,11 @@ public class BeerRestV1Controller {
         return restBeer;
     }
 
+    /**
+     * Method used for creating a Beer from a POST
+     * @param payload
+     * @return
+     */
     @RequestMapping(value = "/beer", method = RequestMethod.POST)
     public RestBeerV1 createBeer(@RequestBody String payload) {
         logger.debug("Post Payload : " + payload);
@@ -57,6 +68,12 @@ public class BeerRestV1Controller {
         return restBeerV1;
     }
 
+    /**
+     * Method to obtain a random number between 0 and the size put in
+     * This could be moved to a Utils class, but as it is not used anywhere else I will leave it here for now
+     * @param size
+     * @return
+     */
     private int obtainRandomIndex(int size) {
         Random random = new Random();
         return random.nextInt(size);

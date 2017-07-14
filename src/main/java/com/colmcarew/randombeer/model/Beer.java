@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 /**
  * Created by colmcarew on 13/07/2017.
+ * The Beer Domain Class
  */
 
 @Entity
@@ -18,6 +19,8 @@ public class Beer {
     @URL
     private String imageUrl;
     private Double alcoholPercentage;
+    // Many to One used as I could not figure out how to have a Beer and a Brewery each have their own repository
+    // But for Beer still be able to save as it needs to point to the Brewery
     @ManyToOne
     @JoinColumn(name = "brewery_id")
     private Brewery brewery;

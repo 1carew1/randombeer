@@ -11,6 +11,7 @@ import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.
 
 /**
  * Created by colmcarew on 13/07/2017.
+ * This class is used for setting up the H2 Database
  */
 @Configuration
 public class DataSourceConfig {

@@ -7,6 +7,7 @@ import java.util.Set;
 
 /**
  * Created by colmcarew on 13/07/2017.
+ * The Brewery Domain Class
  */
 
 @Entity

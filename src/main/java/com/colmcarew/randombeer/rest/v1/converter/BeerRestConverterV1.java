@@ -23,6 +23,11 @@ public class BeerRestConverterV1 {
     public BeerRestConverterV1() {
     }
 
+    /**
+     * Take in a Beer DB object and Convert it to a Rest Friendly Object i.e. no database Ids
+     * @param beer
+     * @return
+     */
     public RestBeerV1 obtainRestFriendlyBeer(Beer beer) {
         RestBeerV1 restBeer = new RestBeerV1(beer.getName(),
                 beer.getDescription(),
@@ -32,6 +37,15 @@ public class BeerRestConverterV1 {
         return restBeer;
     }
 
+    /**
+     * Take in a Rest Beer, if the Beer is not in the DB, create the Beer, if the Brewery is not in the DB create the Brewery as well
+     * If the Beer already exists return a null Beer
+     * Note method should be split up to improve testability
+     * BreweryRepository was input as a paramater as this class may not always have access to the Session
+     * @param restBeerV1
+     * @param breweryRepository
+     * @return
+     */
     public Beer saveOrFindBeerFromRestBeer(RestBeerV1 restBeerV1, BreweryRepository breweryRepository) {
         Brewery brewery = breweryRepository.findByLocation(restBeerV1.getBreweryLocation());
         Set<Beer> beers = new HashSet<>();
