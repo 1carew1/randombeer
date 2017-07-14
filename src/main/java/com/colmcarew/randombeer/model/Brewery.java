@@ -17,7 +17,11 @@ public class Brewery {
     Long id;
     private String name;
     private String location;
-    @OneToMany(mappedBy = "brewery", cascade = CascadeType.ALL)
+    // The Eager fetch is a bad idea in general - used as the test "testCreatingABeer" was failing without it
+    // I would prefer if Brewery knew nothing about Beer and Beer pointed to the Brewery incase a Brewery has a very large number of beers
+    // As then it is a bad idea for a brewery to have many beers, unfortunately this was the only way I could figure out how to get an Entity to have
+    // Another Entity in Spring, for now
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "brewery", cascade = CascadeType.ALL)
     private Set<Beer> beers;
 
     public Brewery(){}
