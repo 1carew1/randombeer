@@ -10,24 +10,45 @@
 <script src="https://fb.me/react-15.0.1.js"></script>
 <script src="https://fb.me/react-dom-15.0.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script type="text/babel">
 var Beer = React.createClass({
   render: function() {
-    return (
-      <tr>
+    var result = null;
+    if(this.props.beer) {
+      result = (      <tr>
         <td>{this.props.beer.name}</td>
         <td>{this.props.beer.age}</td>
         <td>{this.props.beer.years}</td>
       </tr>);
+    }
+    return result;
   }
 });
 var BeerTable = React.createClass({
-  render: function() {
-    var rows = [];
-    this.props.beers.forEach(function(beer, i) {
-      rows.push(<Beer beer={beer} key={i} />);
+
+  obtainRandomBeer: function() {
+    var self = this;
+    $.ajax({
+      url: "/api/v1/beer"
+    }).then(function (data) {
+        console.log(data);
+        self.setState({beer: data});
     });
+  },
+
+  getInitialState: function () {
+    return {beer: null};
+  },
+
+  componentDidMount: function() {
+    this.obtainRandomBeer();
+    console.log('Welcome to the house of fun');
+  },
+
+  render: function() {
+    var row = (<Beer beer={this.state.beer} />);
     return (
         <div className="container">
           <table className="table table-striped">
@@ -38,21 +59,15 @@ var BeerTable = React.createClass({
                 <th>Years</th>
               </tr>
             </thead>
-            <tbody>{rows}</tbody>
+            <tbody>{row}</tbody>
           </table>
         </div>
       );
   }
 });
 
-var BEERS = [
-  {name: 'Hop House 13', age: 45, years: 5},
-  {name: 'Metalman', age: 54, years: 8},
-  {name: 'Lagunitas', age: 34, years: 12}
-];
-
 ReactDOM.render(
-  <BeerTable beers={BEERS} />, document.getElementById('root')
+  <BeerTable />, document.getElementById('root')
 );
 </script>
 </body>
