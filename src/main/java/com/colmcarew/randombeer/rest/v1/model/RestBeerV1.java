@@ -11,6 +11,8 @@ public class RestBeerV1 {
     private String breweryLocation;
     private String imageUrl;
 
+    public RestBeerV1(){}
+
     public RestBeerV1(String name, String description, Double alcoholPercentage, String breweryLocation, String imageUrl) {
         this.name = name;
         this.description = description;
