@@ -21,31 +21,15 @@ public class RestBeerV1 {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Double getAlcoholPercentage() {
         return alcoholPercentage;
     }
 
-    public void setAlcoholPercentage(Double alcoholPercentage) {
-        this.alcoholPercentage = alcoholPercentage;
-    }
-
     public String getBreweryLocation() {
         return breweryLocation;
-    }
-
-    public void setBreweryLocation(String breweryLocation) {
-        this.breweryLocation = breweryLocation;
     }
 }
